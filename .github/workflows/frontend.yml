@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  build-and-deploy:
+  build:
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -33,10 +33,11 @@ jobs:
       - name: npm run build
         working-directory: src/frontend
         run: npm run build
-
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: node-rn
-        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-        
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
