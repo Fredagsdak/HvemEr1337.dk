@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'src/Frontend/**'
+      - 'src/frontend/**'
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -23,13 +23,13 @@ jobs:
           node-version: 14.15.4
           
       - name: npm ci
-        working-directory: src/Frontend
+        working-directory: src/frontend
         run: npm ci   
           
       - name: npm run test
-        working-directory: src/Frontend
+        working-directory: src/frontend
         run: npm run test
           
       - name: npm run build
-        working-directory: src/Frontend
+        working-directory: src/frontend
         run: npm run build

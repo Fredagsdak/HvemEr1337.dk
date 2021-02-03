@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'src/Backend/Posts/*'
+      - 'src/backend/Posts/*'
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -22,9 +22,9 @@ jobs:
           dotnet-version: '5.0.x'
       
       - name: dotnet build
-        working-directory: src/Backend/Posts
+        working-directory: src/backend/Posts
         run: dotnet build
 
       - name: dotnet test
-        working-directory: src/Backend/Posts
+        working-directory: src/backend/Posts
         run: dotnet test
