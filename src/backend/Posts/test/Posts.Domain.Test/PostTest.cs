@@ -14,22 +14,23 @@ namespace Posts.Domain.Test
             private Guid _id = Guid.NewGuid();
             private string _message = "Some message";
             private Guid _userId = Guid.NewGuid();
+            private DateTimeOffset _timestamp = DateTimeOffset.UtcNow;
 
             public When_initializing()
             {
-                _sut = new Post(_id, _message, _userId);
+                _sut = new Post(_id, _message, _userId, _timestamp);
             }
 
             [Fact]
             public void It_throws_when_message_is_null()
             {
-                Assert.Throws<ArgumentException>(() => new Post(_id, null, _userId));
+                Assert.Throws<ArgumentException>(() => new Post(_id, null, _userId, _timestamp));
             }
 
             [Fact]
             public void It_throws_when_user_id_is_empty()
             {
-                Assert.Throws<ArgumentException>(() => new Post(_id, _message, Guid.Empty));
+                Assert.Throws<ArgumentException>(() => new Post(_id, _message, Guid.Empty, _timestamp));
             }
 
             [Fact]
@@ -42,6 +43,12 @@ namespace Posts.Domain.Test
             public void It_sets_user_id()
             {
                 Assert.Equal(_userId, _sut.UserId);
+            }
+
+            [Fact]
+            public void It_sets_timestamp()
+            {
+                Assert.Equal(_timestamp, _sut.Timestamp);
             }
 
             [Fact]

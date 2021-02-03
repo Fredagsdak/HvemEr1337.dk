@@ -9,7 +9,9 @@ namespace Posts.Domain
 
         public Guid UserId { get; }
 
-        public Post(Guid id, string message, Guid userId) : base(id)
+        public DateTimeOffset Timestamp { get; }
+
+        public Post(Guid id, string message, Guid userId, DateTimeOffset timestamp) : base(id)
         {
             if (string.IsNullOrEmpty(message))
             {
@@ -24,6 +26,7 @@ namespace Posts.Domain
             }
 
             UserId = userId;
+            Timestamp = timestamp;
 
             AddDomainEvent(new PostCreated(this));
         }

@@ -7,6 +7,7 @@ namespace Posts.Domain.Builders
         private Guid _id = Guid.NewGuid();
         private string _message = "Some message";
         private Guid _userId = Guid.NewGuid();
+        private DateTimeOffset _timestamp = new DateTimeOffset(new DateTime(2021, 2, 1, 13, 37, 0));
 
         public PostBuilder WithId(Guid id)
         {
@@ -26,9 +27,15 @@ namespace Posts.Domain.Builders
             return this;
         }
 
+        public PostBuilder WithTimestamp(DateTimeOffset timestamp)
+        {
+            _timestamp = timestamp;
+            return this;
+        }
+
         public Post Build()
         {
-            return new Post(_id, _message, _userId);
+            return new Post(_id, _message, _userId, _timestamp);
         }
     }
 }
