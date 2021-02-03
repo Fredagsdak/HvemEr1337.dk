@@ -44,3 +44,14 @@ jobs:
         uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: App Service Web App Build Action
+        uses: Azure/appservice-build@v2
+        with:
+          # Relative path (within the repository) to the source directory of the project you want to build; if no value is provided for this, the root of the repository ("GITHUB_WORKSPACE" environment variable) will be built.
+          source-directory: src/frontend
+          # Programming platform used to build the web app; if no value is provided, Oryx will determine the platform to build with. The supported values are "dotnet", "nodejs", "php" and "python".
+          platform: nodejs
+          # The directory where the build output has to be put.
+          output-directory: build
+
+    
