@@ -34,9 +34,9 @@ jobs:
         working-directory: src/frontend
         run: npm run build
 
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: node-rn
-        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+      - name: Run Azure webapp deploy action using publish profile credentials
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: node-rn
+          publish-profile: ${{ secrets.azureWebAppPublishProfile }}
         
