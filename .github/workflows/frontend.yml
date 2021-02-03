@@ -38,7 +38,7 @@ jobs:
         
       - name: add process.json
         run: |
-          echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
+          echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> src/frontend/build/process.json
 
       - name: Deploy web app
         uses: azure/webapps-deploy@v2
