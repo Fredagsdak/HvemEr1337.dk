@@ -37,6 +37,7 @@ jobs:
         run: npm run build
   deploy:
     name: Deploy
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Azure Login
