@@ -1,0 +1,30 @@
+name: CI-Posts
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/backend/Posts/*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .net environment
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+      
+      - name: dotnet build
+        working-directory: src/backend/Posts
+        run: dotnet build
+
+      - name: dotnet test
+        working-directory: src/backend/Posts
+        run: dotnet test
