@@ -7,6 +7,8 @@ on:
       - 'src/frontend/**'
   pull_request:
     branches: [ main ]
+    paths: 
+      - 'src/frontend/**'
   workflow_dispatch:
   
 jobs:
