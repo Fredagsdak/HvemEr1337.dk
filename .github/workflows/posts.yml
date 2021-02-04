@@ -2,11 +2,13 @@ name: CI-Posts
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - main
     paths:
       - 'src/backend/Posts/**'
   pull_request:
-    branches: [ main ]
+    branches: 
+      - main
     paths: 
       - 'src/backend/Posts/**'
   workflow_dispatch:
