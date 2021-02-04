@@ -19,25 +19,44 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup .NET environment
+      - 
+        name: Checkout
+        uses: actions/checkout@v2
+      - 
+        name: Setup .NET environment
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x'
-      
-      - name: dotnet build
+      - 
+        name: dotnet build
         run: dotnet build
-
-      - name: dotnet test
+      - 
+        name: dotnet test
         run: dotnet test
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
         
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+      - 
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
         with:
-          file: src/backend/Posts
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
-          registry: docker.pkg.github.com
-          repository: Fredagsdak/HvemEr1337.dk/posts
-          tag_with_ref: true
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./src/backend/posts/Dockerfile
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
+          push: true
+          tags: |
+            ghcr.io/Fredagsdak/HvemEr1337.dk:latest
