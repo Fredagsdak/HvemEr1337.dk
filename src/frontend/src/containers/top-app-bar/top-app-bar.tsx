@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function TopAppBar() {
+export default function TopAppBar(): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
 

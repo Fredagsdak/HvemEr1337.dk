@@ -1,10 +1,18 @@
+import React from "react";
 import TapAppBar from '../top-app-bar/top-app-bar';
+import { Main } from './../main/main';
+import { PageNotFound404 } from './../page-not-found-404/page-not-found-404';
+import { Route, Switch } from "react-router-dom";
 
-function Layout() {
+function Layout(): JSX.Element {
     return (
-        <div>
+        <>
             <TapAppBar />
-        </div>
+            <Switch>
+                <Route exact path="/" component={Main} />
+                <Route path="*" component={PageNotFound404} />
+            </Switch>
+        </>
     );
 }
 
