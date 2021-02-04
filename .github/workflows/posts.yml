@@ -64,3 +64,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/fredagsdak/hvemer1337.dk:latest
+            ghcr.io/fredagsdak/hvemer1337.dk:${{ github.sha }}
