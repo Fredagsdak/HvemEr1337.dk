@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Posts.Infrastructure\Posts.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
