@@ -62,6 +62,8 @@ jobs:
           context: ./src/backend/Posts
           file: ./src/backend/Posts/Dockerfile
           push: true
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.CR_PAT }}
           tags: |
             ghcr.io/fredagsdak/hvemer1337.dk:latest
             ghcr.io/fredagsdak/hvemer1337.dk:${{ github.sha }}
