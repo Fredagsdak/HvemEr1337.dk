@@ -4,29 +4,40 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'src/backend/Posts/*'
+      - 'src/backend/Posts/**'
   pull_request:
     branches: [ main ]
     paths: 
-      - 'src/backend/Posts/*'
+      - 'src/backend/Posts/**'
   workflow_dispatch:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: src/backend/Posts
     name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup .net environment
+      - name: Setup .NET environment
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x'
       
       - name: dotnet build
-        working-directory: src/backend/Posts
         run: dotnet build
 
       - name: dotnet test
-        working-directory: src/backend/Posts
         run: dotnet test
+        
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          file: src/backend/Posts
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          registry: docker.pkg.github.com
+          repository: Fredagsdak/HvemEr1337.dk/posts
+          tag_with_ref: true
