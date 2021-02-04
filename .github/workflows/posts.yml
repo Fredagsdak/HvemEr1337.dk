@@ -63,5 +63,5 @@ jobs:
           file: ./src/backend/Posts/Dockerfile
           push: true
           tags: |
-            ghcr.io/fredagsdak/hvemer1337.dk:latest
-            ghcr.io/fredagsdak/hvemer1337.dk:${{ github.sha }}
+            ghcr.io/fredagsdak/hvemer1337.dk-posts:latest
+            ghcr.io/fredagsdak/hvemer1337.dk-posts:${{ github.sha }}
