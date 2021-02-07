@@ -6,5 +6,7 @@ namespace Posts.Domain
     public interface IPostRepository
     {
         Task<IEnumerable<Post>> GetAll();
+
+        Task Save(Post post);
     }
 }

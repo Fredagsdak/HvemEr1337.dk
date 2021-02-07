@@ -21,6 +21,7 @@ namespace Posts.Api
         {
             var options = Configuration.Get<ApplicationOptions>();
 
+            services.AddApplication();
             services.AddCosmosDb(options);
 
             services.AddControllers();
