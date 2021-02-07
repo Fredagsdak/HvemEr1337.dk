@@ -1,4 +1,4 @@
-namespace Posts.Api.Controllers.Posts.Get
+namespace Posts.Api.Controllers.Posts.Create
 {
     public class Request
     {

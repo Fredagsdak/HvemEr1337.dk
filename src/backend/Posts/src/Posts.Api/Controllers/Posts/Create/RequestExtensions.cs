@@ -1,6 +1,6 @@
 using Posts.Application.Commands;
 
-namespace Posts.Api.Controllers.Posts.Get
+namespace Posts.Api.Controllers.Posts.Create
 {
     public static class RequestExtensions
     {
