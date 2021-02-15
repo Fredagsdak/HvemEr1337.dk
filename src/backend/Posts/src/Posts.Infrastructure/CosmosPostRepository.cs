@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Posts.Domain;
+﻿using Posts.Domain;
 using Posts.Infrastructure.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Posts.Infrastructure
@@ -15,12 +12,6 @@ namespace Posts.Infrastructure
         public CosmosPostRepository(ApplicationDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public async Task<IEnumerable<Post>> GetAll()
-        {
-            var posts = await _context.Posts.ToListAsync();
-            return posts.Select(p => p.ToDomain());
         }
 
         public async Task Save(Post post)
