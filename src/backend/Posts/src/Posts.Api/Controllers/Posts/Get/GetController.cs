@@ -23,7 +23,7 @@ namespace Posts.Api.Controllers.Posts.Get
         }
 
         [HttpGet("{id}", Name = Constants.RouteNames.GetPost)]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get([FromRoute] Guid id)
         {
             var post = await _queries.Get(id);
             if (post is null)

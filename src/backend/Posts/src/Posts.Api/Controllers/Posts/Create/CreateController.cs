@@ -23,7 +23,7 @@ namespace Posts.Api.Controllers.Posts.Create
             var id = Guid.NewGuid();
             var command = request.ToCommand(id);
             await _handler.Handle(command);
-            return CreatedAtAction(Constants.RouteNames.GetPost, new { id = id }, null);
+            return CreatedAtRoute(Constants.RouteNames.GetPost, new { id = id }, null);
         }
     }
 }
