@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Posts.Infrastructure\Posts.Infrastructure.csproj" />
     <ProjectReference Include="..\Posts.Application\Posts.Application.csproj" />
+    <ProjectReference Include="..\Posts.ReadModels\Posts.ReadModels.csproj" />
   </ItemGroup>
 
 </Project>

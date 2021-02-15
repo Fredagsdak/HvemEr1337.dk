@@ -5,6 +5,7 @@ using Posts.Application.CommandHandlers;
 using Posts.Application.Commands;
 using Posts.Domain;
 using Posts.Infrastructure;
+using Posts.ReadModels;
 
 namespace Posts.Api
 {
@@ -12,8 +13,15 @@ namespace Posts.Api
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            // add infrastructure
             services.AddScoped<IPostRepository, CosmosPostRepository>();
+
+            // add application
             services.AddScoped<ICommandHandler<CreatePostCommand>, CreatePostCommandHandler>();
+
+            // add read models
+            services.AddScoped<IPostQueries, PostQueries>();
+
             return services;
         }
 

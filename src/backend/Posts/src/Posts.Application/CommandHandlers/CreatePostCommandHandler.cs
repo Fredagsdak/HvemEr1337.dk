@@ -16,7 +16,7 @@ namespace Posts.Application.CommandHandlers
 
         public async Task Handle(CreatePostCommand command)
         {
-            var post = new Post(Guid.NewGuid(), command.Message, Guid.NewGuid(), DateTimeOffset.UtcNow);
+            var post = new Post(command.Id, command.Message, Guid.NewGuid(), DateTimeOffset.UtcNow);
             await _repository.Save(post);
         }
     }

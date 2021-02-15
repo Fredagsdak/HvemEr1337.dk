@@ -7,7 +7,7 @@ using Posts.Infrastructure;
 
 namespace Posts.Api.Controllers.Posts.Create
 {
-    [Route("/posts")]
+    [Route(Constants.Routes.Posts)]
     public class CreateController : ControllerBase
     {
         private readonly ICommandHandler<CreatePostCommand> _handler;
@@ -17,13 +17,13 @@ namespace Posts.Api.Controllers.Posts.Create
             _handler = handler ?? throw new ArgumentNullException(nameof(handler));
         }
 
-        [HttpPost("")]
+        [HttpPost("", Name = Constants.RouteNames.CreatePost)]
         public async Task<IActionResult> Create([FromBody] Request request)
         {
-            var command = request.ToCommand();
+            var id = Guid.NewGuid();
+            var command = request.ToCommand(id);
             await _handler.Handle(command);
-
-            return Ok();
+            return CreatedAtAction(Constants.RouteNames.GetPost, new { id = id }, null);
         }
     }
 }
