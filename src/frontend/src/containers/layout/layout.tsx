@@ -4,7 +4,7 @@ import { Main } from './../main/main';
 import { PageNotFound404 } from './../page-not-found-404/page-not-found-404';
 import { Route, Switch } from "react-router-dom";
 import { Routes } from './../../shared/routes';
-import { Post1337 } from './../post1337/post1337';
+import Post1337 from "../post1337/post1337";
 
 function Layout(): JSX.Element {
     return (
