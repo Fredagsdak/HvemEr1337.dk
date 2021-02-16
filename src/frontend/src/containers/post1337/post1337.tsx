@@ -26,7 +26,7 @@ const AddPost: React.FC<Props> = ({ savePost }) => {
         history.push(Routes.scoreBoard);
     }
     return <form onSubmit={addNewPost}>
-        <TextField id="post-message" label="Message" onChange={handlePostData} />
+        <TextField id="message" label="Message" onChange={handlePostData} />
         <Button type="submit" variant="contained" color="primary" disabled={post === undefined ? true : false}>
             Submit
     </Button>
@@ -38,7 +38,7 @@ const Post1337: React.FC = () => {
     const savePost = React.useCallback(
         (post: IPost) => dispatch(addPost(post)),
         [dispatch]
-    )
+    );
 
     return <div>
         This is where you post 1337

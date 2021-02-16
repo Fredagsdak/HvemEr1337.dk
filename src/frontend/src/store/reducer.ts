@@ -16,8 +16,8 @@ const reducer = (
             return {
                 ...state,
                 posts: state.posts.concat(newPost)
-            }
-        }
+            };
+        };
         default: return state;
     }
 }
