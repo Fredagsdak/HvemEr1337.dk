@@ -1,18 +1,28 @@
-import * as actionTypes from './action-types';
+import { ActionTypes } from './action-types';
+import { CreatePostRequest } from './../shared/models/create-post-request';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export function addPost(post: IPost) {
   const action: PostAction = {
-    type: actionTypes.ADD_POST,
+    type: ActionTypes.ADD_POST,
     post
-  }
-  // SEND THIS TO THE REAL BACKEND
-  return simulateHttpRequest(action);
+  };
+  return savePost(action);
 }
 
-export function simulateHttpRequest(action: PostAction) {
+function savePost(action: PostAction) {
+  const requestBody: CreatePostRequest = {
+    message: action.post.message
+  };
+
   return (dispatch: DispatchType) => {
-    setTimeout(() => {
-      dispatch(action)
-    }, 500)
+    axios.post('http://localhost:5000/p', requestBody).then(
+      (response: AxiosResponse) => {
+        console.log('response', response)
+        dispatch(action);
+      }
+    ).catch((error: AxiosError) => {
+      console.log('error', error.message);
+    });
   }
 }

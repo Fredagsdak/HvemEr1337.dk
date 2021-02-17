@@ -1,4 +1,4 @@
-import * as actionTypes from './action-types';
+import { ActionTypes } from './action-types';
 
 const initialState: PostState = {
     posts: []
@@ -9,7 +9,7 @@ const reducer = (
     action: PostAction
 ): PostState => {
     switch (action.type) {
-        case actionTypes.ADD_POST: {
+        case ActionTypes.ADD_POST: {
             const newPost: IPost = {
                 message: action.post.message
             };
@@ -17,6 +17,9 @@ const reducer = (
                 ...state,
                 posts: state.posts.concat(newPost)
             };
+        };
+        case ActionTypes.GET_ALL_POSTS: {
+            return state;
         };
         default: return state;
     }
