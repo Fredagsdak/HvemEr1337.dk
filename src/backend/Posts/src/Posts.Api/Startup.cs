@@ -23,7 +23,17 @@ namespace Posts.Api
 
             services.AddApplication();
             services.AddCosmosDb(options);
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("mypolicy",
+                builder =>
+                {
+                    builder
+                        .WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
             services.AddControllers();
         }
 
@@ -35,6 +45,7 @@ namespace Posts.Api
             }
 
             app.UseRouting();
+            app.UseCors("mypolicy");
 
             app.UseEndpoints(endpoints =>
             {
