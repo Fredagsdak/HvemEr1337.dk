@@ -10,16 +10,14 @@ const reducer = (
 ): PostState => {
     switch (action.type) {
         case ActionTypes.ADD_POST: {
-            const newPost: IPost = {
-                message: action.post.message
-            };
-            return {
-                ...state,
-                posts: state.posts.concat(newPost)
-            };
+            return state;
         };
         case ActionTypes.GET_ALL_POSTS: {
-            return state;
+            state.posts.length = 0;
+            return {
+                ...state,
+                posts: state.posts.concat(action.posts)
+            };
         };
         default: return state;
     }

@@ -1,5 +1,7 @@
 interface IPost {
+    id: string;
     message: string;
+    timestamp: Date;
 }
 
 type PostState = {
@@ -8,7 +10,7 @@ type PostState = {
 
 type PostAction = {
     type: string;
-    post: IPost;
+    posts: IPost[];
 }
 
 type DispatchType = (args: PostAction) => PostAction;
