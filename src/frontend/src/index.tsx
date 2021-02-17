@@ -3,14 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Layout from './containers/layout/layout';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import reducer from "./store/reducer";
-
-const store: Store<PostState, PostAction> & {
-  dispatch: DispatchType
-} = createStore(reducer, applyMiddleware(thunk));
+import store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
