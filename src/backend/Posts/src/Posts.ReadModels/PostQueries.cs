@@ -20,6 +20,7 @@ namespace Posts.ReadModels
         {
             return await _dbContext.Posts.Select(p => new Post
             {
+                Id = p.Id,
                 Message = p.Message,
                 Timestamp = p.Timestamp
             }).ToListAsync();
